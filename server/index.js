@@ -8,8 +8,9 @@ const config = require('./config/key');
 const mongoose = require('mongoose');
 
 
-const { auth } = require('.//middleware/auth');
-const { User } = require('.//models/User');
+const { auth } = require('./middleware/auth');
+const { User } = require('./models/User');
+
 
 // application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +29,10 @@ app.get('/', (req, res) => {
   res.send('Hello World! 안녕하세요 새해복 많이 받으세여!~~~~~~~~')
 })
 
+app.get('/api/hello', (req, res) => {
+  res.send("hellow world!")
+})
+
 app.post('/api/users/register', (req, res) => {
   // 회원 가입 할때 필요한 정보들을 client에서 가져오면
   // 그것들을 데이터베이스에 넣어준다.
@@ -41,7 +46,7 @@ app.post('/api/users/register', (req, res) => {
   })
 })
 
-app.post('/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
 
   //요청된 이메일을 데이터베이스에 있는지 찾는다.
   User.findOne({ email: req.body.email }, (err, userInfo) => {
