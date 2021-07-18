@@ -11,6 +11,7 @@ import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import Auth from './hoc/auth'
+import VideoUploadPage from './components/views/VideoUploadPage/VideoUploadPage';
 
 
 export default function App() {
@@ -42,6 +43,7 @@ export default function App() {
 
           <Route path="/login" component = {Auth(LoginPage, false)} />
           <Route path="/register" component = {Auth(RegisterPage, false)} /> 
+          <Route path="/video/upload" component = {Auth(VideoUploadPage, true)} /> 
 
         </Switch>
       </div>
